@@ -23,12 +23,42 @@ public class Main {
 
 
         System.out.println(movil1);
-        movil1.calcularDescuento(movil1);
+        movil1.calcularDescuento();
 
+        // Lista de productos
+        Producto[] productos = {movil1, movil2, movil3, movil4, laptop1, laptop2};
+
+// Mostrar inventario antes de la compra
+        imprimirInventario(productos);
+
+// Simular una compra
+        comprarProducto(movil1, 5);
+
+// Mostrar inventario después de la compra
+        imprimirInventario(productos);
 
 
 
     }
+
+    public static void imprimirInventario(Producto[] productos) {
+        System.out.println("\n📦 Inventario de la tienda:");
+        for (Producto p : productos) {
+            System.out.println(p);
+        }
+    }
+
+    public static void comprarProducto(Producto p, int cantidad) {
+        System.out.println("\n🛒 Comprando " + cantidad + " unidades de " + p.getNombre() + "...");
+        boolean compraExitosa = p.disminuirStock(cantidad);
+        if (compraExitosa) {
+            System.out.println("Compra realizada con éxito.");
+        } else {
+            System.out.println("No se pudo completar la compra.");
+        }
+    }
+
+
 
 
 

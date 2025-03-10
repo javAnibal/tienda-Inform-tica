@@ -54,12 +54,40 @@ public abstract class Producto implements Descuento {
     }
 
     @Override
-    public void calcularDescuento(Producto p) {
+    public void calcularDescuento() {
 
-        double descuentoProducto = p.getPrecio() * p.getTipoGamaProducto().getPrecioGama() / 100;
-        setPrecio(p.getPrecio() - descuentoProducto);
+     //   double descuentoProducto = p.getPrecio() * p.getTipoGamaProducto().getPrecioGama() / 100;
+     //   setPrecio(p.getPrecio() - descuentoProducto);
+
+        double descuentoProducto = this.getPrecio() * this.getTipoGamaProducto().getPrecioGama() / 100;
+        this.setPrecio(this.getPrecio() - descuentoProducto);
+        System.out.println("Descuento aplicado: " + descuentoProducto + "€");
+        System.out.println("Precio final con descuento: " + this.getPrecio() + "€");
 
     }
+
+    // Aumentar stock
+    public void incrementarStock(int cantidad) {
+        if (cantidad > 0) {
+            this.cantidadProducto += cantidad;
+            System.out.println("Stock actualizado: " + this.cantidadProducto);
+        } else {
+            System.out.println("Cantidad inválida para aumentar stock.");
+        }
+    }
+
+    // Disminuir stock (simula una compra)
+    public boolean disminuirStock(int cantidad) {
+        if (cantidad > 0 && this.cantidadProducto >= cantidad) {
+            this.cantidadProducto -= cantidad;
+            System.out.println("Stock reducido. Quedan " + this.cantidadProducto + " unidades.");
+            return true;
+        } else {
+            System.out.println("No hay suficiente stock disponible.");
+            return false;
+        }
+    }
+
 
 
     @Override

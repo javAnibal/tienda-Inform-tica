@@ -36,8 +36,8 @@ public class Movil extends Producto {
     }
 
     @Override
-    public void calcularDescuento(Producto p) {
-        super.calcularDescuento(p);
+    public void calcularDescuento() {
+        super.calcularDescuento();
 
     }
 
